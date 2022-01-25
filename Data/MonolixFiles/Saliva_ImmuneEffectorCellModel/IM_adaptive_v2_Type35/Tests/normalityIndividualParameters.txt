@@ -1,0 +1,7 @@
+parameter,statistics,p-value,test
+tt0,0.978923,0.532688,Shapiro-Wilk
+logbeta,0.973757,0.218827,Shapiro-Wilk
+delta0,0.0812843,0.160572,Kolmogorov-Smirnov
+pi,0.974943,0.157775,Shapiro-Wilk
+tt1,0.0853325,0.673725,Kolmogorov-Smirnov
+gamma0,0.976527,0.0865849,Shapiro-Wilk

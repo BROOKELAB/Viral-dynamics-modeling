@@ -1,0 +1,94 @@
+********************************************************************************
+*                        IM_adaptive_v2_Type35.mlxtran                         *
+*                        October 28, 2021 at 09:22:35                          *
+*                        Monolix version : 5.1.1                               *
+********************************************************************************
+
+
+POPULATION PARAMETERS ESTIMATION _______________________________________________
+
+Fixed Effects ----------------------------
+tt0_pop                        :      2.84
+logbeta_pop                    :      73.5
+delta0_pop                     :      0.58
+beta_delta0_TYPE_2             :      -2.5
+pi_pop                         :      4.16
+tt1_pop                        :      11.1
+beta_tt1_TYPE_2                :     -7.42
+gamma0_pop                     :      1.11
+
+Standard Deviation of the Random Effects -
+omega_tt0                      :      0.29
+omega_logbeta                  :      1.94
+omega_delta0                   :     0.204
+omega_pi                       :      1.78
+omega_tt1                      :      3.51
+omega_gamma0                   :     0.352
+
+Correlations -----------------------------
+corr_pi_logbeta                :    -0.955
+
+Error Model Parameters -------------------
+a                              :     0.811
+b                              :  2.22e-16
+
+Elapsed time (seconds) :   1.7e+2
+CPU time     (seconds) :   7.9e+2
+
+ _______________________________________________________________________________
+
+
+
+INDIVIDUAL PARAMETERS ESTIMATION _______________________________________________
+
+
+Individual Parameters Estimation by Conditional Mean ---------------------------
+                min        Q1    median        Q3       max
+tt0     :      2.66       2.8      2.84      2.89      3.02
+logbeta :     0.331      39.3       123       486   3.11e+3
+delta0  :     0.047    0.0505     0.558      0.63     0.755
+pi      :     0.363      1.62      7.61      15.3       938
+tt1     :    -0.169      6.66      10.8        12      15.4
+gamma0  :     0.765      1.09      1.14      1.23      2.26
+
+Elapsed time (seconds) :      19
+CPU time     (seconds) :    1e+2
+
+ -------------------------------------------------------------------------------
+
+
+Individual Parameters Estimation by Conditional Mode ---------------------------
+                min        Q1    median        Q3       max
+tt0     :      2.67      2.79      2.83      2.86      2.93
+logbeta :     0.235      25.6      69.8       219   1.81e+3
+delta0  :    0.0469    0.0481     0.558     0.632      0.75
+pi      :     0.209       1.4      5.09      10.6       713
+tt1     :     0.208      5.81      9.81      11.4      14.9
+gamma0  :     0.752      1.03      1.09      1.17      2.28
+
+Elapsed time (seconds) :     2.5
+CPU time     (seconds) :      15
+
+ -------------------------------------------------------------------------------
+
+ _______________________________________________________________________________
+
+
+
+LOG-LIKELIHOOD ESTIMATION ______________________________________________________
+                                                            (is)
+
+-2 x log-likelihood                             :        2039.42
+Akaike Information Criteria               (AIC) :        2073.42
+Corrected Bayesian Information Criteria  (BICc) :        2129.54
+Bayesian Information Criteria             (BIC) :        2107.85
+
+Elapsed time                          (seconds) :          45.26
+CPU time                              (seconds) :         244.00
+
+
+[Importance Sampling] Standard error        : 0.466
+                      Sampling distribution : T-distribution with 5 degrees of freedom
+
+ _______________________________________________________________________________
+

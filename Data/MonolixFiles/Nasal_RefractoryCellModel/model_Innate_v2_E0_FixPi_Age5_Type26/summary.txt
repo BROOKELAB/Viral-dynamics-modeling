@@ -1,0 +1,76 @@
+********************************************************************************
+*                 model_Innate_v2_E0_FixPi_Age5_Type26.mlxtran                 *
+*                 October 29, 2021 at 09:57:52                                 *
+*                 Monolix version : 5.1.1                                      *
+********************************************************************************
+
+
+POPULATION PARAMETERS ESTIMATION _______________________________________________
+
+Fixed Effects ----------------------------
+tt0_pop                        :      2.14
+logbeta_pop                    :     0.493
+beta_logbeta_TYPE_2            :    -0.203
+delta0_pop                     :      2.45
+pi_pop                         :       376
+phi0_pop                       :      34.4
+beta_phi0_AGE                  :   -0.0437
+rho_pop                        :    0.0119
+beta_rho_TYPE_2                :    0.0311
+
+Standard Deviation of the Random Effects -
+omega_tt0                      :      1.71
+omega_logbeta                  :     0.156
+omega_delta0                   :     0.236
+omega_phi0                     :       1.1
+omega_rho                      :    0.0699
+
+Error Model Parameters -------------------
+a                              :     0.741
+b                              :      0.01
+
+Elapsed time (seconds) :     1e+2
+CPU time     (seconds) :   5.1e+2
+
+ _______________________________________________________________________________
+
+
+
+INDIVIDUAL PARAMETERS ESTIMATION _______________________________________________
+
+
+Individual Parameters Estimation by Conditional Mode ---------------------------
+                min        Q1    median        Q3       max
+tt0     :     -2.43      1.07      2.24      3.04      5.32
+logbeta :     0.352     0.439     0.485     0.509     0.563
+delta0  :      1.43      2.23       2.5      2.73      3.22
+pi      :       379       379       379       379       379
+phi0    :      0.85      5.54      10.6      17.5      41.5
+rho     :    0.0117    0.0119     0.012    0.0122    0.0126
+
+Elapsed time (seconds) :     1.2
+CPU time     (seconds) :       6
+
+ -------------------------------------------------------------------------------
+
+ _______________________________________________________________________________
+
+
+
+LOG-LIKELIHOOD ESTIMATION ______________________________________________________
+                                                            (is)
+
+-2 x log-likelihood                             :        1803.22
+Akaike Information Criteria               (AIC) :        1835.22
+Corrected Bayesian Information Criteria  (BICc) :        1887.11
+Bayesian Information Criteria             (BIC) :        1867.62
+
+Elapsed time                          (seconds) :          27.74
+CPU time                              (seconds) :         139.00
+
+
+[Importance Sampling] Standard error        : 0.247
+                      Sampling distribution : T-distribution with 5 degrees of freedom
+
+ _______________________________________________________________________________
+

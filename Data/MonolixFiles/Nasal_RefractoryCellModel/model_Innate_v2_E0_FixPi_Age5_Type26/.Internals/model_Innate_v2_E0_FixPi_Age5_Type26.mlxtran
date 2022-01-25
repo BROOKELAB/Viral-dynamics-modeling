@@ -1,0 +1,83 @@
+<DATAFILE>
+
+[FILEINFO]
+file = '../../../data_nasal_age.csv'
+delimiter = comma
+header = {EMPTY, ID, TIME, OBSERVATION, CENSORING, AGE, TYPE}
+
+[CONTENT]
+ID = {use=identifier}
+TIME = {use=time}
+OBSERVATION = {use=observation, name=OBSERVATION, type=continuous}
+CENSORING = {use=censored}
+AGE = {use=covariate, type=continuous}
+TYPE = {use=covariate, type=categorical}
+
+<MODEL>
+
+[COVARIATE]
+input = {AGE, TYPE}
+
+TYPE = {type=categorical, categories={1, 2}}
+
+[INDIVIDUAL]
+input = {delta0_pop, omega_delta0, logbeta_pop, pi_pop, tt0_pop, omega_tt0, phi0_pop, omega_phi0, rho_pop, omega_rho, omega_logbeta, AGE, beta_phi0_AGE, TYPE, beta_logbeta_TYPE_2, beta_rho_TYPE_2}
+
+TYPE = {type=categorical, categories={1, 2}}
+
+DEFINITION:
+delta0 = {distribution=logNormal, typical=delta0_pop, sd=omega_delta0}
+logbeta = {distribution=logNormal, typical=logbeta_pop, covariate=TYPE, coefficient={0, beta_logbeta_TYPE_2}, sd=omega_logbeta}
+pi = {distribution=logNormal, typical=pi_pop, no-variability}
+tt0 = {distribution=normal, typical=tt0_pop, sd=omega_tt0}
+phi0 = {distribution=logNormal, typical=phi0_pop, covariate=AGE, coefficient=beta_phi0_AGE, sd=omega_phi0}
+rho = {distribution=logNormal, typical=rho_pop, covariate=TYPE, coefficient={0, beta_rho_TYPE_2}, sd=omega_rho}
+
+[LONGITUDINAL]
+input = {a, b}
+
+file = '../../model_CoV_Innate_nasal_only.txt'
+
+DEFINITION:
+OBSERVATION = {distribution=normal, prediction=LVL, errorModel=combined1(a, b)}
+
+<FIT>
+data = OBSERVATION
+model = OBSERVATION
+
+<PARAMETER>
+a = {value=1, method=MLE}
+b = {value=0.3, method=MLE}
+beta_logbeta_TYPE_2 = {value=0, method=MLE}
+beta_phi0_AGE = {value=0, method=MLE}
+beta_rho_TYPE_2 = {value=0, method=MLE}
+delta0_pop = {value=2.5, method=MLE}
+logbeta_pop = {value=0.3, method=MLE}
+omega_delta0 = {value=0.5, method=MLE}
+omega_logbeta = {value=1, method=MLE}
+omega_phi0 = {value=2, method=MLE}
+omega_rho = {value=0.5, method=MLE}
+omega_tt0 = {value=1, method=MLE}
+phi0_pop = {value=10, method=MLE}
+pi_pop = {value=400, method=MLE}
+rho_pop = {value=0.005, method=MLE}
+tt0_pop = {value=3, method=MLE}
+
+<MONOLIX>
+
+[TASKS]
+populationParameters()
+individualParameters(method = conditionalMode)
+fim(run = false,method = StochasticApproximation)
+logLikelihood(method = ImportanceSampling)
+plotResult(method = {outputplot, indfits, obspred, residualsscatter, residualsdistribution, parameterdistribution, covariatemodeldiagnosis, randomeffects, covariancemodeldiagnosis, saemresults })
+
+[SETTINGS]
+GLOBAL:
+exportpath = '../'
+
+POPULATION:
+exploratoryiterations = 600
+simulatedannealingiterations = 600
+exploratoryinterval = 300
+

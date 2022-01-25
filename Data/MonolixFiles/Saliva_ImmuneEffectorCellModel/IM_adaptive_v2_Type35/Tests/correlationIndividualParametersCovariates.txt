@@ -1,0 +1,3 @@
+parameter,covariate,statistics,p-value,test
+delta0,TYPE,4382.92,<2.2e-16,Fisher
+tt1,TYPE,76.0784,6.85385e-12,Fisher

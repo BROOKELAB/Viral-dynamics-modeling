@@ -1,0 +1,87 @@
+<DATAFILE>
+
+[FILEINFO]
+file = '../../../data_saliva_age_type.csv'
+delimiter = comma
+header = {EMPTY, ID, TIME, OBSERVATION, CENSORING, AGE, TYPE}
+
+[CONTENT]
+ID = {use=identifier}
+TIME = {use=time}
+OBSERVATION = {use=observation, name=OBSERVATION, type=continuous}
+CENSORING = {use=censored}
+AGE = {use=covariate, type=continuous}
+TYPE = {use=covariate, type=categorical}
+
+<MODEL>
+
+[COVARIATE]
+input = TYPE
+
+TYPE = {type=categorical, categories={1, 2}}
+
+[INDIVIDUAL]
+input = {delta0_pop, omega_delta0, logbeta_pop, pi_pop, omega_pi, tt0_pop, omega_tt0, omega_logbeta, corr_pi_logbeta, gamma0_pop, omega_gamma0, tt1_pop, omega_tt1, TYPE, beta_delta0_TYPE_2, beta_tt1_TYPE_2}
+
+TYPE = {type=categorical, categories={1, 2}}
+
+DEFINITION:
+delta0 = {distribution=logNormal, typical=delta0_pop, covariate=TYPE, coefficient={0, beta_delta0_TYPE_2}, sd=omega_delta0}
+logbeta = {distribution=logNormal, typical=logbeta_pop, sd=omega_logbeta}
+pi = {distribution=logNormal, typical=pi_pop, sd=omega_pi}
+tt0 = {distribution=normal, typical=tt0_pop, sd=omega_tt0}
+gamma0 = {distribution=logNormal, typical=gamma0_pop, sd=omega_gamma0}
+tt1 = {distribution=normal, typical=tt1_pop, covariate=TYPE, coefficient={0, beta_tt1_TYPE_2}, sd=omega_tt1}
+correlation = {level=id, r(pi, logbeta)=corr_pi_logbeta}
+
+[LONGITUDINAL]
+input = {a, b}
+
+file = '../../model_CoV_adaptive_saliva_only.txt'
+
+DEFINITION:
+OBSERVATION = {distribution=normal, prediction=LVL, errorModel=combined1(a, b)}
+
+<FIT>
+data = OBSERVATION
+model = OBSERVATION
+
+<PARAMETER>
+a = {value=1, method=MLE}
+b = {value=0.3, method=MLE}
+beta_delta0_TYPE_2 = {value=-3, method=MLE}
+beta_tt1_TYPE_2 = {value=-4, method=MLE}
+corr_pi_logbeta = {value=0, method=MLE}
+delta0_pop = {value=0.5, method=MLE}
+gamma0_pop = {value=1, method=MLE}
+logbeta_pop = {value=20, method=MLE}
+omega_delta0 = {value=0.5, method=MLE}
+omega_gamma0 = {value=1, method=MLE}
+omega_logbeta = {value=1, method=MLE}
+omega_pi = {value=1, method=MLE}
+omega_tt0 = {value=1, method=MLE}
+omega_tt1 = {value=1, method=MLE}
+pi_pop = {value=8, method=MLE}
+tt0_pop = {value=3, method=MLE}
+tt1_pop = {value=8, method=MLE}
+
+<MONOLIX>
+
+[TASKS]
+populationParameters()
+individualParameters(method = none )
+fim(run = false,method = StochasticApproximation)
+logLikelihood(method = ImportanceSampling)
+plotResult(method = {outputplot, indfits, obspred, residualsscatter, residualsdistribution, parameterdistribution, covariatemodeldiagnosis, randomeffects, covariancemodeldiagnosis, saemresults })
+
+[SETTINGS]
+GLOBAL:
+exportpath = '../'
+
+POPULATION:
+smoothingiterations = 300
+exploratoryiterations = 800
+simulatedannealingiterations = 800
+exploratoryinterval = 500
+smoothinginterval = 100
+

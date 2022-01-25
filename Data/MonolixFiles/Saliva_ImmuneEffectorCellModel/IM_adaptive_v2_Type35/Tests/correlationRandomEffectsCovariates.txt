@@ -1,0 +1,13 @@
+eta,covariate,statistics,p-value,test
+eta_tt0,TYPE,0.011787,0.913948,Fisher
+eta_tt0,AGE,-0.620092,0.537806,Pearson
+eta_logbeta,TYPE,0.530766,0.469433,Fisher
+eta_logbeta,AGE,-1.10368,0.274626,Pearson
+eta_delta0,TYPE,0.000529928,0.981719,Fisher
+eta_delta0,AGE,-0.463943,0.644553,Pearson
+eta_pi,TYPE,0.547183,0.462675,Fisher
+eta_pi,AGE,1.36271,0.178629,Pearson
+eta_tt1,TYPE,0.244981,0.622639,Fisher
+eta_tt1,AGE,-0.717657,0.476062,Pearson
+eta_gamma0,TYPE,0.289288,0.592887,Fisher
+eta_gamma0,AGE,-0.566209,0.573597,Pearson

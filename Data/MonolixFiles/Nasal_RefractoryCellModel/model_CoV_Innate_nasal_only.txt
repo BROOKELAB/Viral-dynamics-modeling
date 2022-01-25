@@ -1,0 +1,34 @@
+
+[LONGITUDINAL]
+input = {tt0, logbeta, delta0, pi, phi0, rho}
+
+EQUATION:
+; Initial conditions
+beta=logbeta*10^(-8)
+phi=phi0*10^(-6)
+
+delta = delta0
+
+t0 = -tt0
+TC_0 = 4*10^6*20
+RC_0 = 0
+EC_0= 1
+IC_0  = 0
+VL_0 = 0
+
+c=10
+kk=4
+;theta1=1
+;theta2=1
+
+epsilon=0
+; Dynamical viral model 
+ddt_TC =  - beta*TC*VL - phi*IC*TC + rho*RC
+ddt_RC =  phi*IC*TC - rho*RC
+ddt_EC  = beta*TC*VL - kk*EC
+ddt_IC  = kk*EC - delta*IC
+ddt_VL = pi*IC - c*VL 
+
+LVL = log10(max(VL,0.001)) ; to have LVL positive
+OUTPUT:
+output = {LVL}
